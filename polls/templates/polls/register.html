@@ -1,0 +1,16 @@
+{% extends 'polls/index.html' %}
+{% block content %}
+<div class="card-body">
+	<div class="d-flex justify-content-center">
+		<div style="width:700px">
+			<h4 class="text-center">Регистрация</h4>
+			<form method="post" id="registerForm">
+				{% csrf_token %}
+				{{form.as_p}}
+				<a href="{% url 'auth' %}" class="btn btn-primary">Назад</a>
+				<button class="btn btn-success float-right"  type="submit">Зарегистрироваться</button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "polls/index.html" %}
+{% block content %}
+	<script type="text/javascript">
+		
+	</script>
+	<div class="card-body">
+	    
+	   	<form method="GET" action="{% url 'getAnswer' %}">
+	   	<h4 class="text-center pb-2">Расчет длины УБТ.</h4>
+	    	{% csrf_token %}
+	    	<div class="form-group">
+	    		<input type="checkbox" name="haveEngine" id="haveEngine" checked>
+	    		<label>Наличие забойного двигателя</label>
+	    	</div>
+	    	<div class="form-group" id="engine">
+	    		<label>Название забойного двигателя:</label>
+	    		<select  class="form-control" name="engine">
+	    			{% for item in engine %}
+	    			<option id="{{item.weight}}">{{ item.name }}</option>
+	    			{% endfor %}
+	    		</select>
+	    	</div>
+	    	<div class="form-group">
+	    		<label>Диаметр долота (мм):</label>
+	    		<select  id="doloto" name="" class="form-control">
+	    		{% for item in  data %}
+	    			<option id="{{item.MinDiametr}}">{{ item.MinDiametr }} - {{item.MaxDiametr}}</option>
+	    		{% endfor %}
+	    		</select>
+	    	</div>
+	    	<div class="form-group">
+	    		<label>Диаметр УБТ (мм):</label>
+	    		<select class="form-control" id="ybt" name="ybtDim" required></select>
+	    	</div>
+	    	<div class="form-group">
+	    		<label>Диаметр обсадной трубы (мм):</label>
+	    		<select class="form-control" id="casing" name="" required>
+	    		</select>
+	    	</div>
+	    	<div class="form-group">
+	    		<label>Диаметр бурильной колонны (мм):</label>
+	    		<select class="form-control" id="boring" name="" required>
+	    		</select>
+	    	</div>
+	    	
+	    	<div class="form-group">
+	    		<label>Требуемая нагрузка (кг):</label>
+	    		<input type="number" min="1" max="99999" class="form-control" name="pressure" required>
+	    	</div>
+	    	<input type="submit" class="btn btn-success float-right" value="Рассчитать длину убт">
+	    </form>
+	</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "polls/index.html" %}
+{% block content %}
+	<div class="card-body">
+		<h4 class="text-center pb-2">История результатов</h4>
+		<a href="{% url 'delete' %}" class="float-right p-2">Очистить личную историю</a>
+		<table class="table table-bordered">
+			<tr>
+				<th>№</th>
+				<th>Дата</th>
+				<th>Нагрузка(тонны)</th>
+				<th>Длина убт(м)</th>
+				<th>Пользователь</th>
+			</tr>
+			{% for item in data %}
+				<tr>
+					<td>{{item.id}}</td>
+					<td>{{item.pub_date|date:"d.m.Y"}}</td>
+					<td>{{item.davl}}</td>
+					<td>{{item.result}}</td>
+					<td>{{item.user}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}

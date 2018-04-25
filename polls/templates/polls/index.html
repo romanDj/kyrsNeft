@@ -1,0 +1,85 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Расчет параметров утяжеленных бурильных труб</title>
+	<link rel="stylesheet" href="{% static 'polls/css/bootstrap-grid.css' %}">
+	<link rel="stylesheet" href="{% static 'polls/css/bootstrap-reboot.css' %}">
+	<link rel="stylesheet" href="{% static 'polls/css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+	
+</head>
+<body>
+	<div class="container">
+
+			<div class="bg-dark" >
+			    <h2 class="p-4 m-0 text-light">Расчет параметров утяжеленных бурильных труб.</h2>
+			</div>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+			  <a class="navbar-brand" href="#"></a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarNav">
+			    <ul class="navbar-nav">
+			      <li class="nav-item active">
+			        <a class="nav-link" href="{% url 'index' %}">Главная</a>
+			      </li>
+			      
+			      {% if request.user.is_authenticated %}
+			      <li class="nav-item">
+			        <a class="nav-link" href="{% url 'calc' %}">Калькулятор</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="{% url 'histor' %}">История расчетов</a>
+			      </li>
+			      {% else %}
+			        <li class="nav-item">
+			        <a class="nav-link" href="{% url 'auth' %}">Авторизация</a>
+			      </li>
+			      {% endif %}
+ 				<li class="nav-item">
+			        <a class="nav-link" href="{% url 'help' %}">Помощь</a>
+			      </li>
+			       {% if request.user.is_authenticated %}
+			      <li class="nav-item">
+			        <a class="nav-link text-danger border-left" href="{% url 'logoutBtn' %}">Выйти, {{request.user}}</a>
+			      </li>
+			       {% endif %}
+			      
+			    </ul>
+			  </div>
+			</nav>
+
+		<div class="card rounded-0 border-0">
+			{% block content %}
+		
+				
+					<div class="card-body" id="teoria">
+
+		    			<h3 class="text-center">
+		    		 	Утяжеленные бурильные трубы
+		    			</h3>
+		    			<img src="{% static 'polls/truba.png' %}" class="img-rounded float-right ">
+	    				<p>Утяжеленные бурильные трубы представляют собой отдельный тип инструмента, который по классификации бурового инструмента можно отнести к категории бурильных труб. Утяжеленные бурильные трубы, как следует из названия, изготавливаются с большим показателем толщины стен по сравнению с простыми бурильными трубами.</p>
+
+						<p>Утяжеленные бурильные трубы ввиду большего количества используемого металла для производства таких толстостенных конструкций труб, утяжеленные бурильные трубы обладают большей массой и показателем жесткости. Кроме того, УБТ обладают большей продольной устойчивостью. Все эти характеристики обеспечивают удобство и эффективность использования этой категории бурильных труб в нижней части буровой колонны. Именно дополнительный вес позволяет создавать необходимую нагрузку на буровое долото, оказывая влияние на эффективность его работы.</p>
+
+						<p>Утяжеленные бурильные трубы изготавливаются из видов стали, группа прочности которых относится к категории Д и К. Это гладкие по всей длине, круглые в сечении трубы различного диаметра, верхняя часть которых может отличаться в зависимости от вида данного бурового инструмента. Существует трехгранная вариация сечения (где грани могут быть как прямыми, так и спиралевидными) УБТ, которые используются для уменьшения искривления скважины. На концах утяжеленной бурильной трубы расположены резьбовые замковые соединения, обеспечивающие надежное крепление всех элементов конструкции.</p>
+
+						<p>Данный инструмент устанавливается в нижней части бурильной колонны, создавая осевую нагрузку на породоразрушающий элемент, препятствуя износу бурильных труб и искривлению ствола скважины. Кроме того, за счет своего веса утяжеленные бурильные трубы в нижней части конструкции растягивают колонну бурильных труб, так как за счет небольшой жесткости при сжатии велика вероятность их изгиба и последующего разрушения.</p>
+
+						<p>Как и ведущая бурильная труба, утяжеленные бурильные трубы обеспечивают ряд важных характеристик и свойств бурильной колонны, что напрямую сказывается на производительности буровой установки и износостойкости других элементов. Именно такое большое значение данной категории бурового инструмента предъявляет высокие требования к его качеству. И речь в данном случае идет не только о материале изготовления, но и о повышенной прочности резьбовых соединений, соосности, сбалансированности и прямолинейности трубы, а также отсутствии различного рода дефектов на внутренних и наружных поверхностях.</p>
+	    			</div>
+
+			{% endblock %}
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="{% static 'polls/jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'polls/bootstrap.js' %}"></script>
+	<script type="text/javascript" src="{% static 'polls/script.js' %}"></script>
+</body>
+</html>
